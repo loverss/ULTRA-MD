@@ -26,7 +26,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
         ? conn.user.jid
         : m.sender
   if (!(who in global.db.data.users)) throw `✳️ The user is not found in my database`
-  let pp = './assets/qasim.jpg'
+  let pp = './assets/C.jpg'
   let user = global.db.data.users[who]
   let { name, exp, diamond, lastclaim, registered, regTime, age, level, role, warn } =
     global.db.data.users[who]
@@ -90,7 +90,7 @@ function clockString(ms) {
 }
 
 function ucapan() {
-  const time = moment.tz('Asia/Kolkata').format('HH')
+  const time = moment.tz('Asia/Karachi').format('HH')
   let res = 'happy early in the day☀️'
   if (time >= 4) {
     res = 'Good Morning 🌄'

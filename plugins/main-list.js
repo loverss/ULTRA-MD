@@ -8,13 +8,14 @@ let handler = async (m, { conn, usedPrefix, command }) => {
         : m.sender
   if (!(who in global.db.data.users)) throw `✳️ The user is not found in my database`
 
-  let pp = './assets/Ultra.jpg'
+  let pp = './assets/B.jpg'
   let more = String.fromCharCode(8206)
   let readMore = more.repeat(850)
 
   let lkr
   switch (command) {
-    case 'list':
+    case 'listmenu':
+    case 'menulist':
       lkr ='*Get ready for the ride, here are your ticket options:*\n\n' +
         '🌅 *' +
         usedPrefix +
@@ -33,7 +34,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
         "funmenu* - The bot's party hat. Games, jokes and instant ROFLs.\n\n" +
         '💵 *' +
         usedPrefix +
-        'economymenu* - Your personal vault of virtual economy.\n\n' +
+        'economy* - Your personal vault of virtual economy.\n\n' +
         '🎮 *' +
         usedPrefix +
         'gamemenu* - Enter the gaming arena.\n\n' +
@@ -42,7 +43,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
         'stickermenu* - A rainbow of stickers.\n\n' +
         '🪙 *' +
         usedPrefix +
-        "toolmenu* - Your handy-dandy toolkit.\n\n" +
+        "toolsmenu* - Your handy-dandy toolkit.\n\n" +
         '🧲 *' +
         usedPrefix +
         'logomenu* - Create a logo that screams You.\n\n' +
@@ -58,7 +59,10 @@ let handler = async (m, { conn, usedPrefix, command }) => {
          '🎉 *' +
         usedPrefix +
         'animemenu* - Animated Images,Stickers and Videos.\n\n' +
-         '🪁 *' +
+         '🍒 *' +
+        usedPrefix +
+        'reactions* - Anime reactions menu for group.\n\n' +
+        '🪁 *' +
         usedPrefix +
         'infoanime* - Full Information About Animes Like imdb.\n\n' +
         '💡 *' +
@@ -82,6 +86,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
       lkr = `
 ╭───『 *Bot* 』─❍
 ◈ •quran
+◈ •autoreact
 ◈ •gita
 ◈ •ping
 ◈ •uptime
@@ -104,7 +109,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 ◈ •groups
 ◈ •blocklist
 ◈ •listprem
-◈ •list
+◈ •listmenu
 ◈ •mrcs
 ◈ © GlobalTechInfo
 ╰─────────❍` // Your bot menu message here
@@ -122,6 +127,8 @@ let handler = async (m, { conn, usedPrefix, command }) => {
  ◈ •google
  ◈ •bro
  ◈ •ai
+ ◈ •fact
+ ◈ •why
  ╰─────────❍` //
  break
       case 'imagen':
@@ -137,6 +144,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
  ◈ •hercai-simurg
  ◈ •photoleap
  ◈ •realistic
+ ◈ •lexica
  ◈ •dalle
  ╰─────────❍` //
  break
@@ -144,7 +152,9 @@ let handler = async (m, { conn, usedPrefix, command }) => {
       lkr = `
 ╭───『 *Owner* 』─❍
 ◈ •enable
+◈ •intro
 ◈ •banchat
+◈ •autoreact
 ◈ •unbanchat
 ◈ •banuser
 ◈ •unbanuser
@@ -158,6 +168,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 ◈ •getfile
 ◈ •getplugin
 ◈ •plugins
+◈ •listplugins
 ◈ •install
 ◈ •remove
 ◈ •savecontact
@@ -184,6 +195,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 ◈ •update
 ◈ •intro
 ◈ •ban
+◈ •var
 ◈ •afk
 ◈ •save
 ◈ •allow
@@ -246,6 +258,7 @@ let handler = async (m, { conn, usedPrefix, command }) => {
       lkr = `
 ╭───『 *Group* 』─❍
 ◈ •kick
+◈ •wyr
 ◈ •promote
 ◈ •demote
 ◈ •groupinfo
@@ -310,6 +323,8 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 ◈ •igstalk
 ◈ •facebook
 ◈ •wallpapers
+◈ •rwall
+◈ •rnekos
 ◈ •swdl
 ◈ •dlstatus
 ╰─────────❍` //
@@ -366,6 +381,37 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 ◈ •ytcomment
 ◈ •stupid
 ◈ •lolicon
+╰─────────❍` //
+      break
+      case 'animereactions':
+case 'reactions':
+lkr=`
+╭───『 *Reactions* 』─❍
+◈ •bully
+◈ •cuddle
+◈ •cry
+◈ •hug
+◈ •awoo
+◈ •kiss
+◈ •lick
+◈ •pat
+◈ •smug
+◈ •bonk
+◈ •yeet
+◈ •blush
+◈ •wave
+◈ •highfive
+◈ •handhold
+◈ •nom
+◈ •bite
+◈ •glomp
+◈ •slap
+◈ •kill
+◈ •happy
+◈ •wink
+◈ •poke
+◈ •dance
+◈ •cringe
 ╰─────────❍` //
       break
     case 'animemenu':
@@ -478,11 +524,13 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 ◈ •removebg
 ◈ •smeme
 ◈ •trigger
+◈ •stickers
 ◈ •getsticker
 ◈ •tgsticker
 ◈ •emojimix
 ◈ •toimg
 ◈ •tovid
+◈ •quote
 ◈ •quoted
 ◈ •rc
 ◈ •ttp
@@ -490,7 +538,6 @@ let handler = async (m, { conn, usedPrefix, command }) => {
 ◈ •attp
 ◈ •attp2
 ◈ •attp3
-◈ Add remove bg key First
 ╰─────────❍` //
       break
     case 'toolmenu':
@@ -673,6 +720,7 @@ lkr=`
   ◈ •stupid
   ◈ •tweet <comment>
   ◈ •lolicon
+  ◈ •logololi
   ◈ •ytcomment <comment>
   ╰─────────❍` //
       break
@@ -687,8 +735,11 @@ lkr=`
 }
 
 handler.help = [
-  'list',
+  'listmenu',
+  'menulist',
   'aimenu',
+  'animereactions',
+  'reactions',
   'imagen',
   'imagenai',
   'animemenu',
@@ -717,8 +768,11 @@ handler.help = [
 ]
 handler.tags = ['main']
 handler.command = [
-  'list',
+  'listmenu',
+  'menulist',
   'aimenu',
+  'animereactions',
+  'reactions',
   'imagen',
   'imagenai',
   'animemenu',
